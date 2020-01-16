@@ -8,6 +8,7 @@ axios
     console.log(response);
   })
 
+
 /* Step 2: Inspect and study the data coming back, this is YOUR 
    github info! You will need to understand the structure of this 
    data in order to use it to build your component function 
@@ -50,20 +51,38 @@ const followersArray = [];
 </div>
 
 */
-function github(info) {
+function github(obj) {
 
 // create element
-newCard = document.createElement('div');
-newImage = document.createElement('img');
-cardInfo = document.createElement('div');
-usersName = document.createElement('p');
-usersUsersName = document.createElement('p');
-usersLocation = document.createElement('p');
-profile = document.createElement('p');
-profilehref = document.createElement('a');
-followers = document.createElement('p');
-following = document.createElement('p');
-bio = document.createElement('p');
+
+const card = document.createElement('div');
+      cardImage = document.createElement('img');
+      cardInfo = document.createElement('div');
+      cardName = document.createElement('h3');
+      cardUserName = document.createElement('p');
+      cardUserLocation = document.createElement('p');
+      cardProfile = document.createElement('p');
+      cardLink = document.createElement('a');
+      cardFollowers = document.createElement('p');
+      cardFollowing = document.createElement('p');
+      cardBio = document.createElement('p');
+
+//class list
+card.classList.add('card');
+cardInfo.classList.add('card-info');
+cardName.classList.add('name');
+cardUsername.classList.add('username');
+
+//append child
+card.appendChild(cardImage);
+card.appendChild(cardInfo);
+cardInfo.appendChold(cardName);
+cardInfo.appendChild(cardUserName);
+cardInfo.appendChild(cardUserLocation);
+cardProfile.appendChild(cardLink);
+cardInfo.appendChild(cardFollowers);
+cardInfo.appendChild(cardFollowing);
+cardInfo.appendChild(cardBio);
 
 }
 
@@ -74,3 +93,4 @@ bio = document.createElement('p');
   luishrd
   bigknell
 */
+
