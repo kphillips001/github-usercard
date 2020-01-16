@@ -30,7 +30,7 @@ axios
           user, and adding that card to the DOM.
 */
 
-const followersArray = [];
+const followersArray  = [];
 
 /* Step 3: Create a function that accepts a single object as its only argument,
           Using DOM methods and properties, create a component that will return the following DOM element:
@@ -51,40 +51,68 @@ const followersArray = [];
 </div>
 
 */
-function github(obj) {
+let instructorArray = []
 
-// create element
+function cardCreate(instructorArray) {
 
-const card = document.createElement('div');
-      cardImage = document.createElement('img');
-      cardInfo = document.createElement('div');
-      cardName = document.createElement('h3');
-      cardUserName = document.createElement('p');
-      cardUserLocation = document.createElement('p');
-      cardProfile = document.createElement('p');
-      cardLink = document.createElement('a');
-      cardFollowers = document.createElement('p');
-      cardFollowing = document.createElement('p');
-      cardBio = document.createElement('p');
+  const card = document.createElement("div");
+  const cardImg = document.createElement("img");
+  const cardInfo = document.createElement("div");
+  const cardName = document.createElement("h3");
+  const cardUsername = document.createElement("p");
+  const cardLocation = document.createElement("p");
+  const cardProfile = document.createElement("p");
+  const cardLink = document.createElement("a");
+  const cardFollowers = document.createElement("p");
+  const cardFollowing = document.createElement("p");
+  const cardBio = document.createElement("p");
 
-//class list
-card.classList.add('card');
-cardInfo.classList.add('card-info');
-cardName.classList.add('name');
-cardUsername.classList.add('username');
+  card.classList.add("card");
+  cardInfo.classList.add("card-info");
+  cardName.classList.add("name");
+  cardUsername.classList.add("username");
 
-//append child
-card.appendChild(cardImage);
-card.appendChild(cardInfo);
-cardInfo.appendChold(cardName);
-cardInfo.appendChild(cardUserName);
-cardInfo.appendChild(cardUserLocation);
-cardProfile.appendChild(cardLink);
-cardInfo.appendChild(cardFollowers);
-cardInfo.appendChild(cardFollowing);
-cardInfo.appendChild(cardBio);
+  card.appendChild(cardImg);
+  card.appendChild(cardInfo);
+  cardInfo.appendChild(cardName);
+  cardInfo.appendChild(cardUsername);
+  cardInfo.appendChild(cardLocation);
+  cardInfo.appendChild(cardProfile);
+  cardProfile.appendChild(cardLink);
+  cardInfo.appendChild(cardFollowers);
+  cardInfo.appendChild(cardFollowing);
+  cardInfo.appendChild(cardBio);
 
+  cardImg.src = instructorArray.avatar_url;
+  cardName.textContent = instructorArray.name;
+  cardUsername.textContent = instructorArray.login;
+  cardLocation.textContent = instructorArray.location;
+  cardProfile.textContent = `Profile: ${cardLink}`;
+  cardLink.src = instructorArray.html_url;
+  cardFollowers.textContent = `Followers: ${instructorArray.followers}`;
+  cardFollowing.textContent = `Following: ${instructorArray.following}`;
+  cardBio.textContent = `Bio: ${instructorArray.bio}`
+
+  return card;
 }
+
+let usernames = ["tetondan", "dustinmyers", "justsml", "luishrd", "bigknell"];
+
+usernames.forEach(username => {
+
+  const cards = document.querySelector(".cards");
+
+  axios.get(`https://api.github.com/users/${username}`)
+    .then(response => {
+      cards.appendChild(cardCreate(response.data))
+    })
+    .catch(err => {
+      console.log(err)
+    })
+
+  return instructorArray;
+})
+ 
 
 /* List of LS Instructors Github username's: 
   tetondan
