@@ -50,6 +50,22 @@ const followersArray = [];
 </div>
 
 */
+function github(info) {
+
+// create element
+newCard = document.createElement('div');
+newImage = document.createElement('img');
+cardInfo = document.createElement('div');
+usersName = document.createElement('p');
+usersUsersName = document.createElement('p');
+usersLocation = document.createElement('p');
+profile = document.createElement('p');
+profilehref = document.createElement('a');
+followers = document.createElement('p');
+following = document.createElement('p');
+bio = document.createElement('p');
+
+}
 
 /* List of LS Instructors Github username's: 
   tetondan
